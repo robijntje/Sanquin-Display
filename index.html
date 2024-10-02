@@ -79,7 +79,6 @@
         .fact {
             font-size: 1.2em;
             margin-top: 20px;
-            display: none;
             color: #444;
         }
     </style>
@@ -89,7 +88,6 @@
         <h1>Sanquin</h1>
         <div class="blood-drop"></div>
         <p>For Life.</p>
-        <button onclick="showFact()">Feitjes</button>
         <div class="fact" id="fact-box"></div>
     </div>
 
@@ -102,12 +100,19 @@
             "Als je bloed geeft krijg je een gratis gezondheidscheck."
         ];
 
-        function showFact() {
-            const factBox = document.getElementById('fact-box');
-            const randomFact = facts[Math.floor(Math.random() * facts.length)];
-            factBox.innerText = randomFact;
-            factBox.style.display = 'block';
-        }
-    </script>
+let currentFactIndex = 0;
+
+function showNextFact() {
+    const factBox = document.getElementById('fact-box');
+    factBox.innerText = facts[currentFactIndex];
+    currentFactIndex = (currentFactIndex + 1) % facts.length;  // Gaat terug naar het eerste feitje nadat het laatste feitje is getoond.
+}
+
+// Toont het volgende feitje na 3 seconden.
+setInterval(showNextFact, 3000);
+
+// Initieert het eerste feitje als de pagina wordt geladen.
+window.onload = showNextFact;
+</script>
 </body>
 </html>
