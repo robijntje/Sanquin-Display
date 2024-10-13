@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordt bloeddonor en redt levens!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://mijn.sanquin.nl/images/flow-gradient-home.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 { /*Niet meer in gebruik, is nu logo */
+            font-size: 2.5em;
+            color: crimson;
+            margin-bottom: 10px;
+        }
+
+        .blood-drop {
+            display: inline-block;
+            background: crimson;
+            width: 100px;
+            height: 150px;
+            border-radius: 60% 60% 40% 40%;
+            position: relative;
+            margin: 20px 0;
+            animation: pulse 2s infinite;
+        }
+
+        .blood-drop:before {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            top: 20px;
+            left: 35px;
+            border-radius: 50%;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        button {
+            background: crimson;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #d10000;
+        }
+
+        .fact {
+            font-size: 1.2em;
+            margin-top: 20px;
+            color: #444;
+        }
+
+        .goal {
+        font-size: 1.2em;
+        margin-top: 20px;
+        color: crimson;
+        background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://mijn.sanquin.nl/img/UI$Images$logo_sanquin.svg?638608749613559731"/> <br>
+        <div class="blood-drop"></div>
+        <p></p>
+        <div class="fact" id="fact-box"></div>
+    </div>
+
+    <div class="goal">
+        Donatiemeter: <span id="goal-progress"></span>
+    </div>
+
+    <script>
+        const facts = [
+            "Bloed kan levens redden bij ongevallen.",
+            "Met één donatie kun je tot drie personen helpen.",
+            "Bloed is nodig voor het uitvoeren van operaties.",
+            "Maar 3% van Nederland doneert bloed.",
+            "Als je bloed geeft krijg je een gratis gezondheidscheck."
+        ];
+
+let currentFactIndex = 0;
+
+function showNextFact() {
+    const factBox = document.getElementById('fact-box');
+    factBox.innerText = facts[currentFactIndex];
+    currentFactIndex = (currentFactIndex + 1) % facts.length;  // Gaat terug naar het eerste feitje nadat het laatste feitje is getoond.
+}
+
+// Toont het volgende feitje na 3 seconden.
+setInterval(showNextFact, 3000);
+
+// Initieert het eerste feitje als de pagina wordt geladen.
+window.onload = showNextFact;
+
+let donationGoal = 50;  // Hardcoded nummer ter vervaning van dynamisch nummer
+    document.getElementById('goal-progress').textContent = `${donationGoal}% van het doel is behaald.`;
+</script>
+</body>
+</html>
