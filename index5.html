@@ -53,9 +53,8 @@
             align-self: flex-start;
         }
 
-        h1 { /*Niet meer in gebruik, is nu logo */
+        h1 { /* Titel voor elk segment */
             font-size: 2.5em;
-            color: crimson;
             margin-bottom: 10px;
         }
 
@@ -63,6 +62,11 @@
             background-color: black;
             color: white;
             font-style:italic;
+        }
+
+        .goal-progress { 
+            font-size: 2.5em;
+            margin-bottom: 10px;
         }
 
         .blood-drop {
@@ -118,7 +122,6 @@
             flex: 2;
         font-size: 1.2em;
         margin-top: 20px;
-        color: crimson;
         background: rgba(255, 255, 255, 0.2);
             padding: 30px;
             border-radius: 10px;
@@ -138,7 +141,7 @@
             font-size: 1.2em;
             margin-bottom: 10px;
             padding: 10px;
-            background: #fff;
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 5px;
             box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
         }
@@ -166,11 +169,12 @@
         <div class="fact" id="fact-box"></div>
     </div>
     <div class="goal">
-        Donatiemeter: <span id="goal-progress"></span>
+        <p><h1>Het donatiedoel van deze maand</h1></p>
+        <span id="goal-progress"></span>
     </div>
 <p></p>
     <div class="info-container">
-        <p>Wil jij komen doneren?</p>
+        <p><h1>Wil jij komen doneren?</h1></p>
     
         <div class="location-list" id="location-list"></div>
     </div>
@@ -201,7 +205,7 @@ setInterval(showNextFact, 3000);
 window.onload = showNextFact;
 
 let donationGoal = 50;  // Hardcoded nummer ter vervaning van dynamisch nummer
-    document.getElementById('goal-progress').textContent = `${donationGoal}% van het doel is behaald.`;
+    document.getElementById('goal-progress').textContent = `${donationGoal}% van het doel is behaald`;
 
 
 //Lijst aan locaties
