@@ -82,10 +82,24 @@
             color: #444;
         }
 
-        .counter {
-            font-size: 1.5em;
+        .location-list {
             margin-top: 20px;
-            color: crimson;
+            text-align: left;
+        }
+
+        .location-item {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .available {
+            color: green;
+            font-weight: bold;
+            margin-top: 5px;
         }
     </style>
 </head>
@@ -95,23 +109,12 @@
         <div class="blood-drop"></div>
         <p></p>
         <div class="fact" id="fact-box"></div>
-        Levens gered: <span id="lives-saved">0</span>
     </div>
-    
-    <script>
-        let savedLives = 0;
-        const livesElement = document.getElementById('lives-saved');
-    
-        function updateLives() {
-            if (savedLives < 100) { // Teller stopt bij 100
-                savedLives++;
-                livesElement.textContent = savedLives;
-            }
-        }
-    
-        setInterval(updateLives, 100); // Elke 100ms gaat de teller omhoog
-    </script>
+<div class="Container">
+    <p>Wil jij komen doneren?</p>
 
+    <div class="location-list" id="location-list"></div>
+</div>
     <script>
         const facts = [
             "Bloed kan levens redden bij ongevallen.",
@@ -134,6 +137,42 @@ setInterval(showNextFact, 3000);
 
 // Initieert het eerste feitje als de pagina wordt geladen.
 window.onload = showNextFact;
+
+//Lijst aan locaties
+ // Array met alle locaties die worden weergegeven.
+ // De availability status kan worden ingevuld om aan te geven dat
+ // locatie veel plaats beschikbaar heeft.
+ const donationLocations = [
+            { name: "Maastricht", availability: "Veel plaats" },
+            { name: "Roermond", availability: "" },
+            { name: "Sittard", availability: "Veel plaats" },
+            { name: "Weert (pop-up locatie)", availability: "" },
+            { name: "Eindhoven", availability: "Veel plaats" }
+        ];
+
+        // Deze function toont de dynamische lijst aan locaties
+        function showLocations() {
+            const locationList = document.getElementById('location-list');
+            donationLocations.forEach(location => {
+                const locationItem = document.createElement('div');
+                locationItem.classList.add('location-item');
+                locationItem.innerHTML = `<strong>${location.name}</strong>`;
+
+                                
+                // Voegt extra tekst toe als locatie beschikbaar is.
+                if (location.availability) {
+                    const availabilityText = document.createElement('p');
+                    availabilityText.classList.add('available');
+                    availabilityText.innerText = location.availability;
+                    locationItem.appendChild(availabilityText);
+                }
+
+                locationList.appendChild(locationItem);
+            });
+        }
+
+        // Laat locaties zijn bij laden pagina
+        window.onload = showLocations;
 </script>
 </body>
 </html>
