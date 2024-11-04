@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wordt bloeddonor en redt levens!</title>
+    <title>Become a blood donor and save lives.</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background: url('https://mijn.sanquin.nl/images/flow-gradient-home.jpg') no-repeat center center fixed;
+            /* background: url('https://mijn.sanquin.nl/images/flow-gradient-home.jpg') no-repeat center center fixed; */
             background-size: cover;
             display: flex;
             justify-content: center;
@@ -160,13 +160,13 @@
     <div class="layout-img">
         <div class="image-container">
     <img src="https://mijn.sanquin.nl/img/UI$Images$logo_sanquin.svg?638608749613559731" height="70%"/>
-    <h2>Redt levens, wordt bloeddonor.</h2>
+    <h2>Save lives, become a blood donor.</h2>
 </div>
 
 <p> </p>
 
 <div class="info-container">
-    <p><h1>Wil jij komen doneren?</h1></p>
+    <p><h1>Donation locations</h1></p>
 
     <div class="location-list" id="location-list"></div>
 </div>
@@ -174,12 +174,12 @@
     <div class="info-container">
 
        <!-- <img src="/img/bloodbag.png"/> --> 
-        <H1>Wist je dat?</H1>
+        <H1>Did you know?</H1>
         <p></p>
         <div class="fact" id="fact-box"></div>
     </div>
     <div class="goal">
-        <p><h1>Het donatiedoel van deze maand</h1></p>
+        <p><h1>The donation goal of this month</h1></p>
         <span id="goal-progress"></span>
     </div>
 
@@ -187,11 +187,11 @@
 
     <script>
         const facts = [
-            "Bloed kan levens redden bij ongevallen.",
-            "Met één donatie kun je tot drie personen helpen.",
-            "Bloed is nodig voor het uitvoeren van operaties.",
-            "Maar 3% van Nederland doneert bloed.",
-            "Als je bloed geeft krijg je een gratis gezondheidscheck."
+            "Blood can save lives in accidents.",
+            "One donation can help up to three people.",
+            "Blood is needed to perform operations.",
+            "Only 3% of the Netherlands donates blood.",
+            "When you donate blood you get a free health check."
         ];
 
 let currentFactIndex = 0;
@@ -209,7 +209,7 @@ setInterval(showNextFact, 3000);
 window.onload = showNextFact;
 
 let donationGoal = 50;  // Hardcoded nummer ter vervaning van dynamisch nummer
-    document.getElementById('goal-progress').textContent = `${donationGoal}% van het doel is behaald`;
+    document.getElementById('goal-progress').textContent = `${donationGoal}% of the goal has been reached`;
 
 
 //Lijst aan locaties
@@ -217,11 +217,11 @@ let donationGoal = 50;  // Hardcoded nummer ter vervaning van dynamisch nummer
  // De availability status kan worden ingevuld om aan te geven dat
  // locatie veel plaats beschikbaar heeft.
  const donationLocations = [
-            { name: "Maastricht", availability: "Veel plaats" },
+            { name: "Maastricht", availability: "A lot of availability" },
             { name: "Roermond", availability: "" },
-            { name: "Sittard", availability: "Veel plaats" },
+            { name: "Sittard", availability: "A lot of availability" },
             { name: "Weert (pop-up locatie)", availability: "" },
-            { name: "Eindhoven", availability: "Veel plaats" }
+            { name: "Eindhoven", availability: "A lot of availability" }
         ];
 
         // Deze function toont de dynamische lijst aan locaties
